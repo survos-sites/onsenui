@@ -1,17 +1,38 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+{% extends "layout.html.twig" %}
         {% block stylesheets %}
+            {{ parent() }}
+            <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
+            <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
+
         {% endblock %}
 
         {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
+            <script>
+                window.fn = {};
+
+                window.fn.toggleMenu = function () {
+                    document.getElementById('appSplitter').right.toggle();
+                };
+
+                window.fn.loadView = function (index) {
+                    document.getElementById('appTabbar').setActiveTab(index);
+                    document.getElementById('sidemenu').close();
+                };
+
+                window.fn.loadLink = function (url) {
+                    window.open(url, '_blank');
+                };
+
+                window.fn.pushPage = function (page, anim) {
+                    if (anim) {
+                        document.getElementById('appNavigator').pushPage(page.id, { data: { title: page.title }, animation: anim });
+                    } else {
+                        document.getElementById('appNavigator').pushPage(page.id, { data: { title: page.title } });
+                    }
+                };
+            </script>
+{#            <script src="https://cdnjs.cloudflare.com/ajax/libs/onsen/2.12.8/js/onsenui.min.js" integrity="sha512-gTBYvF3IPbzY0LLzGILVeSPCbNEGdttGGwFmU/It7aX3UXZzfyn9TaQO9vegWAV24ChabN/YsjZoYrJkdJrOTA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>#}
+            <script src="https://cdn.jsdelivr.net/npm/onsenui@2.12.8/js/onsenui.min.js"></script>
+            {{ parent() }}
         {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
-</html>
+

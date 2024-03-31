@@ -25,4 +25,18 @@ return [
     '@hotwired/turbo' => [
         'version' => '7.3.0',
     ],
+    'onsenui' => [
+        'version' => '2.12.8',
+    ],
+    'onsenui/css/onsen-css-components.min.css' => [
+        'version' => '2.12.8',
+        'type' => 'css',
+    ],
+    'onsenui/css/onsenui.css' => [
+        'version' => '2.12.8',
+        'type' => 'css',
+    ],
+    'ionicons' => [
+        'version' => '7.2.2',
+    ],
 ];
