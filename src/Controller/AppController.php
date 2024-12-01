@@ -25,7 +25,8 @@ class AppController extends AbstractController
     public function todo(): Response
     {
         return $this->render('todo.html.twig', [
-        ]);
+        ]
+        );
     }
 
 }
