@@ -39,4 +39,8 @@ return [
     'ionicons' => [
         'version' => '7.2.2',
     ],
+    'onsenui/css/onsenui.min.css' => [
+        'version' => '2.12.8',
+        'type' => 'css',
+    ],
 ];
